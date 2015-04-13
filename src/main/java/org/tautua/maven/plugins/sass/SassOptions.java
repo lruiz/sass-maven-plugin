@@ -25,6 +25,7 @@ public class SassOptions {
     private File input = new File("src/main/sass");
     private File output = new File("target/generated-sources/sass");
     private File cache = new File("target/sass_cache");
+    private Style style = Style.EXPANDED;
 
     public File getInput() {
         return input;
@@ -36,5 +37,16 @@ public class SassOptions {
 
     public File getCache() {
         return cache;
+    }
+
+    public Style getStyle() {
+        return style;
+    }
+
+    enum Style {
+        COMPACT,
+        COMPRESSED,
+        EXPANDED,
+        NESTED
     }
 }

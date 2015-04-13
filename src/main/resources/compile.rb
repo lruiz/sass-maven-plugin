@@ -32,11 +32,11 @@ require 'susy'
 Sass::Plugin.options.merge!(
     :template_location => $sassOptions.input.path,
     :css_location => $sassOptions.output.path,
+    :style => $sassOptions.style.name.downcase.to_sym,
     :cache_location => $sassOptions.cache.path,
     :cache => true,
     :always_update => true,
-    :unix_newlines => true,
-    :style => :expanded
+    :unix_newlines => true
 )
 
 Sass::Plugin.on_updated_stylesheet do |inputfile, outputfile|

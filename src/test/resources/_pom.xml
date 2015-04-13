@@ -16,6 +16,7 @@
                     <sassOptions>
                         <input>src/test/sass</input>
                         <output>target/generated-test-sources/css</output>
+                        <style>COMPRESSED</style>
                     </sassOptions>
                 </configuration>
             </plugin>
