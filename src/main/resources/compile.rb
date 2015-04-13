@@ -10,36 +10,29 @@ puts "GEM VERSION " + Gem::VERSION
 puts "GEM HOME " + Gem.dir
 puts "GEMS PATH " + Gem.paths.path.to_s
 
-begin
-    sass_spec = Gem::Specification.find_by_name("sass")
-    puts "sass found"
-rescue LoadError
-    puts "no sass, installing... "
-    Gem.install("sass")
-    sass_spec = Gem::Specification.find_by_name("sass")
-    puts "sass installed"
+def load_gem(gem)
+    begin
+        gem_spec = Gem::Specification.find_by_name(gem)
+        puts gem + " found"
+    rescue LoadError
+        puts "installing " + gem
+        Gem.install(gem)
+        gem_spec = Gem::Specification.find_by_name("sass")
+        puts gem + " installed"
+    end
 end
 
+load_gem("sass")
 require 'sass'
 require 'sass/plugin'
 
-begin
-    susy_spec = Gem::Specification.find_by_name("susy")
-    puts "susy found"
-rescue LoadError
-    puts "no susy, installing..."
-    Gem.install("susy")
-    susy_spec = Gem::Specification.find_by_name("susy")
-    puts "susy installed"
-end
-
+load_gem("susy")
 require 'susy'
 
-
 Sass::Plugin.options.merge!(
-    :template_location => $sassOptions.input.absolutePath,
-    :css_location => $sassOptions.output.absolutePath,
-    :cache_location => $sassOptions.cache.absolutePath,
+    :template_location => $sassOptions.input.path,
+    :css_location => $sassOptions.output.path,
+    :cache_location => $sassOptions.cache.path,
     :cache => true,
     :always_update => true,
     :unix_newlines => true,
@@ -50,9 +43,8 @@ Sass::Plugin.on_updated_stylesheet do |inputfile, outputfile|
     $callback.compiled(inputfile, outputfile)
 end
 
-java_import org.tautua.maven.plugins.sass.SyntaxException
-
 Sass::Plugin.on_compilation_error do |error|
+    java_import org.tautua.maven.plugins.sass.SyntaxException
     $callback.error(SyntaxException.new(error.to_s, error.sass_filename, error.sass_line))
 end
 

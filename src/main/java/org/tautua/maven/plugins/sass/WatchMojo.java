@@ -25,7 +25,7 @@ import javax.script.ScriptException;
  * @author Larry Ruiz. Apr 11, 2015
  */
 @Mojo(name="watch")
-public class SassWatchMojo extends SassMojo {
+public class WatchMojo extends SassMojo {
     public void execute() throws MojoExecutionException {
         try {
             run("/compile.rb");

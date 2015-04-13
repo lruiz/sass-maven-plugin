@@ -24,7 +24,7 @@ import java.io.File;
 public class SassOptions {
     private File input = new File("src/main/sass");
     private File output = new File("target/generated-sources/sass");
-    private File cache = new File("target/sasscache");
+    private File cache = new File("target/sass_cache");
 
     public File getInput() {
         return input;
