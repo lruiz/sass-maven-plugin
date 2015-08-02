@@ -46,9 +46,8 @@ public abstract class SassMojo extends AbstractMojo {
         jruby.put("jruby_options", jrubyOptions);
         jruby.put("sass_options", sassOptions);
         jruby.put("callback", callback);
-        Object object = jruby.eval(getScriptReader(scriptpath));
-
-        getLog().debug("eval");
+        jruby.put("logger", getLog());
+        jruby.eval(getScriptReader(scriptpath));
     }
 
     private Reader getScriptReader(String scriptpath){

@@ -6,19 +6,19 @@ env = {
 }
 Gem.paths = env
 
-puts "GEM VERSION " + Gem::VERSION
-puts "GEM HOME " + Gem.dir
-puts "GEMS PATH " + Gem.paths.path.to_s
+$logger.debug "GEM VERSION " + Gem::VERSION
+$logger.debug "GEM HOME " + Gem.dir
+$logger.debug "GEMS PATH " + Gem.paths.path.to_s
 
 def load_gem(gem)
     begin
         gem_spec = Gem::Specification.find_by_name(gem.name)
-        puts gem.to_s + " found"
+        $logger.debug gem.to_s + " found"
     rescue LoadError
-        puts "installing " + gem.to_s
+        $logger.debug "installing " + gem.to_s
         Gem.install(gem.name, gem.version)
         gem_spec = Gem::Specification.find_by_name(gem.name)
-        puts gem.to_s + " installed"
+        $logger.debug gem.to_s + " installed"
     end
 end
 
