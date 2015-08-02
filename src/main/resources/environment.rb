@@ -2,7 +2,7 @@ require 'rubygems'
 
 env = {
     'GEM_PATH' => [Gem.dir],
-    'GEM_HOME' => $jrubyOptions.gemHome.absolutePath
+    'GEM_HOME' => $jruby_options.gemHome.absolutePath
 }
 Gem.paths = env
 
@@ -12,28 +12,28 @@ puts "GEMS PATH " + Gem.paths.path.to_s
 
 def load_gem(gem)
     begin
-        gem_spec = Gem::Specification.find_by_name(gem)
-        puts gem + " found"
+        gem_spec = Gem::Specification.find_by_name(gem.name)
+        puts gem.to_s + " found"
     rescue LoadError
-        puts "installing " + gem
-        Gem.install(gem)
-        gem_spec = Gem::Specification.find_by_name("sass")
-        puts gem + " installed"
+        puts "installing " + gem.to_s
+        Gem.install(gem.name, gem.version)
+        gem_spec = Gem::Specification.find_by_name(gem.name)
+        puts gem.to_s + " installed"
     end
 end
 
-load_gem("sass")
-require 'sass'
+$jruby_options.gems.each { |gem|
+    load_gem(gem)
+    require gem.name
+}
+
 require 'sass/plugin'
 
-load_gem("susy")
-require 'susy'
-
 Sass::Plugin.options.merge!(
-    :template_location => $sassOptions.input.path,
-    :css_location => $sassOptions.output.path,
-    :style => $sassOptions.style.name.downcase.to_sym,
-    :cache_location => $sassOptions.cache.path,
+    :template_location => $sass_options.input.path,
+    :css_location => $sass_options.output.path,
+    :style => $sass_options.style.name.downcase.to_sym,
+    :cache_location => $sass_options.cache.path,
     :cache => true,
     :always_update => true,
     :unix_newlines => true

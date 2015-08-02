@@ -38,7 +38,9 @@ public class Gem {
         String[] args = arg.split(":");
         name = args[0];
         if(args.length > 1) {
-            version = args[1];
+            if(!"LATEST".equals(args[1])) {
+                version = args[1];
+            }
         }
     }
 
@@ -48,5 +50,10 @@ public class Gem {
 
     public String getVersion() {
         return version;
+    }
+
+    @Override
+    public String toString() {
+        return name + ":" + (version == null ? "LATEST" : version);
     }
 }

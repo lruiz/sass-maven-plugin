@@ -17,6 +17,7 @@
 package org.tautua.maven.plugins.sass;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,13 +25,13 @@ import java.util.Map;
  */
 public class JRubyOptions {
     private File gemHome = new File(System.getProperty("java.io.tmpdir"), "jruby/shared");
-    private Gem[] gems;
+    private List<Gem> gems;
 
     public File getGemHome() {
         return gemHome;
     }
 
-    public Gem[] getGems() {
+    public List<Gem> getGems() {
         return gems;
     }
 

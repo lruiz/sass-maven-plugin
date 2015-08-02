@@ -39,8 +39,12 @@ public abstract class SassMojo extends AbstractMojo {
         ScriptEngine jruby = engineManager.getEngineByName("jruby");
         SassCallback callback = new LoggingCallback(getLog());
 
-        jruby.put("jrubyOptions", jrubyOptions);
-        jruby.put("sassOptions", sassOptions);
+        if(jrubyOptions.findGem("sass") == null) {
+            jrubyOptions.getGems().add(new Gem("sass"));
+        }
+
+        jruby.put("jruby_options", jrubyOptions);
+        jruby.put("sass_options", sassOptions);
         jruby.put("callback", callback);
         Object object = jruby.eval(getScriptReader(scriptpath));
 
