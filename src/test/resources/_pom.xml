@@ -13,6 +13,12 @@
                 <groupId>org.tautua.maven.plugins.sass</groupId>
                 <artifactId>sass-maven-plugin</artifactId>
                 <configuration>
+                    <jrubyOptions>
+                        <gems>
+                            <gem>sass:3.5.1</gem>
+                            <gem>susy</gem>
+                        </gems>
+                    </jrubyOptions>
                     <sassOptions>
                         <input>src/test/sass</input>
                         <output>target/generated-test-sources/css</output>

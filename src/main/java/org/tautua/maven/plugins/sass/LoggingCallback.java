@@ -16,11 +16,30 @@
 
 package org.tautua.maven.plugins.sass;
 
-/**
- * @author Larry Ruiz. Aug 02, 2015
- */
-public interface SassCallback {
-    void compiled(String sassfile, String cssfile);
+import org.apache.maven.plugin.logging.Log;
 
-    void error(SyntaxException e);
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author lruiz. Apr 12, 2015
+ */
+public class LoggingCallback implements SassCallback {
+    private Log log;
+    private List<SyntaxException> exceptions = new ArrayList<>();
+
+    public LoggingCallback(Log log) {
+        this.log = log;
+    }
+
+    @Override
+    public void compiled(String sassfile, String cssfile){
+        log.info("compiled " + sassfile);
+    }
+
+    @Override
+    public void error(SyntaxException e){
+        log.error("compilation error: " + e.getMessage());
+        exceptions.add(e);
+    }
 }

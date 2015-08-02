@@ -22,7 +22,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * @author Larry Ruiz. Apr 11, 2015
@@ -37,11 +37,34 @@ public abstract class SassMojo extends AbstractMojo {
     protected void run(String scriptpath) throws ScriptException {
         ScriptEngineManager engineManager = new ScriptEngineManager();
         ScriptEngine jruby = engineManager.getEngineByName("jruby");
-        SassCallback callback = new SassCallback(getLog());
+        SassCallback callback = new LoggingCallback(getLog());
 
         jruby.put("jrubyOptions", jrubyOptions);
         jruby.put("sassOptions", sassOptions);
         jruby.put("callback", callback);
-        jruby.eval(new InputStreamReader(getClass().getResourceAsStream(scriptpath)));
+        Object object = jruby.eval(getScriptReader(scriptpath));
+
+        getLog().debug("eval");
+    }
+
+    private Reader getScriptReader(String scriptpath){
+        Reader environment = new InputStreamReader(getClass().getResourceAsStream("/environment.rb"));
+        Reader specific = new InputStreamReader(getClass().getResourceAsStream(scriptpath));
+        StringWriter writer = new StringWriter();
+        try {
+            transfer(environment, writer);
+            writer.append("\n");
+            transfer(specific, writer);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
+        return new StringReader(writer.toString());
+    }
+
+    public static void transfer(Reader in, Writer out) throws IOException {
+        int ch;
+        while ((ch = in.read()) != -1) {
+            out.append((char) ch);
+        }
     }
 }

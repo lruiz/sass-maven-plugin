@@ -17,14 +17,16 @@
 package org.tautua.maven.plugins.sass;
 
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
 import javax.script.ScriptException;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @author Larry Ruiz. Apr 11, 2015
  */
-@Mojo(name="watch")
+@Mojo(name="watch", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public class WatchMojo extends SassMojo {
     public void execute() throws MojoExecutionException {
         try {

@@ -17,10 +17,36 @@
 package org.tautua.maven.plugins.sass;
 
 /**
- * @author Larry Ruiz. Aug 02, 2015
+ * @author Larry Ruiz. May 02, 2015
  */
-public interface SassCallback {
-    void compiled(String sassfile, String cssfile);
+public class Gem {
+    private String name;
+    private String version;
 
-    void error(SyntaxException e);
+    public Gem(){}
+
+    public Gem(String arg) {
+        set(arg);
+    }
+
+    public Gem(String name, String version) {
+        this.name = name;
+        this.version = version;
+    }
+
+    public void set(String arg) {
+        String[] args = arg.split(":");
+        name = args[0];
+        if(args.length > 1) {
+            version = args[1];
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getVersion() {
+        return version;
+    }
 }

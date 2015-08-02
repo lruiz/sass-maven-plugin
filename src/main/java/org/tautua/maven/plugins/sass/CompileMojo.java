@@ -17,6 +17,7 @@
 package org.tautua.maven.plugins.sass;
 
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 
 import javax.script.ScriptException;
@@ -24,7 +25,7 @@ import javax.script.ScriptException;
 /**
  * @author Larry Ruiz. Apr 11, 2015
  */
-@Mojo(name="compile")
+@Mojo(name="compile",defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public class CompileMojo extends SassMojo {
     public void execute() throws MojoExecutionException {
         try {
