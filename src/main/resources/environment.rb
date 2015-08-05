@@ -13,12 +13,12 @@ $logger.debug "GEMS PATH " + Gem.paths.path.to_s
 def load_gem(gem)
     begin
         gem_spec = Gem::Specification.find_by_name(gem.name)
-        $logger.debug gem.to_s + " found"
+        $logger.debug gem_spec.name + ":" + gem_spec.version.to_s + " found"
     rescue LoadError
         $logger.debug "installing " + gem.to_s
         Gem.install(gem.name, gem.version)
         gem_spec = Gem::Specification.find_by_name(gem.name)
-        $logger.debug gem.to_s + " installed"
+        $logger.debug gem_spec.name + ":" + gem_spec.version.to_s + " installed"
     end
 end
 
