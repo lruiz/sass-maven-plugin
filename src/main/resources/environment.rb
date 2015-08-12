@@ -2,7 +2,7 @@ require 'rubygems'
 
 env = {
     'GEM_PATH' => [Gem.dir],
-    'GEM_HOME' => $jruby_options.gemHome.absolutePath
+    'GEM_HOME' => $rubygems_options.gemHome.absolutePath
 }
 Gem.paths = env
 
@@ -22,7 +22,7 @@ def load_gem(gem)
     end
 end
 
-$jruby_options.gems.each { |gem|
+$rubygems_options.gems.each { |gem|
     load_gem(gem)
     require gem.name
 }

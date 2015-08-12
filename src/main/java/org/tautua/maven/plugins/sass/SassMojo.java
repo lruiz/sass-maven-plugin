@@ -29,7 +29,7 @@ import java.io.*;
  */
 public abstract class SassMojo extends AbstractMojo {
     @Parameter
-    private JRubyOptions jrubyOptions = new JRubyOptions();
+    private RubygemsOptions rubygemsOptions = new RubygemsOptions();
 
     @Parameter
     private SassOptions sassOptions = new SassOptions();
@@ -39,11 +39,11 @@ public abstract class SassMojo extends AbstractMojo {
         ScriptEngine jruby = engineManager.getEngineByName("jruby");
         SassCallback callback = new LoggingCallback(getLog());
 
-        if(jrubyOptions.findGem("sass") == null) {
-            jrubyOptions.getGems().add(new Gem("sass"));
+        if(rubygemsOptions.findGem("sass") == null) {
+            rubygemsOptions.getGems().add(new Gem("sass"));
         }
 
-        jruby.put("jruby_options", jrubyOptions);
+        jruby.put("rubygems_options", rubygemsOptions);
         jruby.put("sass_options", sassOptions);
         jruby.put("callback", callback);
         jruby.put("logger", getLog());

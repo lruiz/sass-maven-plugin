@@ -17,18 +17,18 @@
 package org.tautua.maven.plugins.sass;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Larry Ruiz. Apr 11, 2015
  */
-public class JRubyOptions {
-    private File gemHome = new File(System.getProperty("java.io.tmpdir"), "jruby/shared");
-    private List<Gem> gems;
+public class RubygemsOptions {
+    private File home = new File(System.getProperty("java.io.tmpdir"), "jruby/shared");
+    private List<Gem> gems = new ArrayList<>();
 
-    public File getGemHome() {
-        return gemHome;
+    public File getHome() {
+        return home;
     }
 
     public List<Gem> getGems() {
