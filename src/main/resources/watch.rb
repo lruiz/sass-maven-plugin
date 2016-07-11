@@ -11,5 +11,3 @@ Sass::Plugin.on_template_deleted do |inputfile|
 end
 
 Sass::Plugin.watch
-
-puts "watching... "

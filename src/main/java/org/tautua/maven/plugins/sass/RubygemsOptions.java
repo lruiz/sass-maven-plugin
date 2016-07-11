@@ -24,7 +24,7 @@ import java.util.List;
  * @author Larry Ruiz. Apr 11, 2015
  */
 public class RubygemsOptions {
-    private File home = new File(System.getProperty("java.io.tmpdir"), "jruby/shared");
+    private File home = new File(System.getProperty("java.io.tmpdir"), "jruby/gems/shared");
     private List<Gem> gems = new ArrayList<>();
 
     public File getHome() {

@@ -26,11 +26,11 @@ import java.util.concurrent.CountDownLatch;
 /**
  * @author Larry Ruiz. Apr 11, 2015
  */
-@Mojo(name="watch", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
+@Mojo(name = "watch", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public class WatchMojo extends SassMojo {
     public void execute() throws MojoExecutionException {
         try {
-            run("/compile.rb");
+            run("/watch.rb");
         } catch (ScriptException e) {
             throw new MojoExecutionException("Ruby script failed to executed",e);
         }

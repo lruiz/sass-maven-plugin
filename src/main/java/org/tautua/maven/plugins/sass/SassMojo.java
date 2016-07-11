@@ -35,6 +35,8 @@ public abstract class SassMojo extends AbstractMojo {
     private SassOptions sassOptions = new SassOptions();
 
     protected void run(String scriptpath) throws ScriptException {
+        System.setProperty("org.jruby.embed.localcontext.scope", "threadsafe");
+
         ScriptEngineManager engineManager = new ScriptEngineManager();
         ScriptEngine jruby = engineManager.getEngineByName("jruby");
         SassCallback callback = new LoggingCallback(getLog());

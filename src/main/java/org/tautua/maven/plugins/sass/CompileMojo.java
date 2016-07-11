@@ -25,7 +25,7 @@ import javax.script.ScriptException;
 /**
  * @author Larry Ruiz. Apr 11, 2015
  */
-@Mojo(name="compile",defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
+@Mojo(name = "compile", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public class CompileMojo extends SassMojo {
     public void execute() throws MojoExecutionException {
         try {

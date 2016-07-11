@@ -52,6 +52,7 @@ public class SassMojoTest {
         sassMojo.execute();
     }
 
+    /*
     @Test
     public void watch() throws Exception {
         File pom = new File("src/test/resources/_pom.xml");
@@ -62,4 +63,5 @@ public class SassMojoTest {
         assertNotNull(sassMojo);
         sassMojo.execute();
     }
+    */
 }

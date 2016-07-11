@@ -1,24 +1,24 @@
 require 'rubygems'
 
 env = {
-    'GEM_PATH' => [Gem.dir],
-    'GEM_HOME' => $rubygems_options.gemHome.absolutePath
+    'GEM_PATH' => Gem.dir,
+    'GEM_HOME' => $rubygems_options.home.absolutePath
 }
 Gem.paths = env
 
-$logger.debug "GEM VERSION " + Gem::VERSION
-$logger.debug "GEM HOME " + Gem.dir
-$logger.debug "GEMS PATH " + Gem.paths.path.to_s
+$logger.info "GEM VERSION " + Gem::VERSION
+$logger.info "GEM HOME " + Gem.dir
+$logger.info "GEMS PATH " + Gem.paths.path.to_s
 
 def load_gem(gem)
     begin
         gem_spec = Gem::Specification.find_by_name(gem.name)
-        $logger.debug gem_spec.name + ":" + gem_spec.version.to_s + " found"
+        $logger.info gem_spec.name + ":" + gem_spec.version.to_s + " found"
     rescue LoadError
-        $logger.debug "installing " + gem.to_s
+        $logger.info "installing " + gem.to_s
         Gem.install(gem.name, gem.version)
         gem_spec = Gem::Specification.find_by_name(gem.name)
-        $logger.debug gem_spec.name + ":" + gem_spec.version.to_s + " installed"
+        $logger.info gem_spec.name + ":" + gem_spec.version.to_s + " installed"
     end
 end
 
