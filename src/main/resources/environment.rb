@@ -11,20 +11,31 @@ $logger.info "GEM HOME " + Gem.dir
 $logger.info "GEMS PATH " + Gem.paths.path.to_s
 
 def load_gem(gem)
+    gem_spec = nil
     begin
-        gem_spec = Gem::Specification.find_by_name(gem.name)
-        $logger.info gem_spec.name + ":" + gem_spec.version.to_s + " found"
+        if gem.version == nil
+            gem_spec = Gem::Specification.find_by_name(gem.name)
+        else
+            gem_spec = Gem::Specification.find_by_name(gem.name, "=" + gem.version)
+        end
     rescue LoadError
         $logger.info "installing " + gem.to_s
         Gem.install(gem.name, gem.version)
-        gem_spec = Gem::Specification.find_by_name(gem.name)
+        if gem.version == nil
+            gem_spec = Gem::Specification.find_by_name(gem.name)
+        else
+            gem_spec = Gem::Specification.find_by_name(gem.name, "=" + gem.version)
+        end
         $logger.info gem_spec.name + ":" + gem_spec.version.to_s + " installed"
     end
+    return gem_spec
 end
 
 $rubygems_options.gems.each { |gem|
-    load_gem(gem)
-    require gem.name
+    gem_spec = load_gem(gem)
+    $logger.info gem_spec.name + ":" + gem_spec.version.to_s + " found"
+    gem gem_spec.name, "=" + gem_spec.version.to_s
+    require gem_spec.name
 }
 
 require 'sass/plugin'

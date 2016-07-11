@@ -15,7 +15,8 @@
                 <configuration>
                     <rubygemsOptions>
                         <gems>
-                            <gem>susy</gem>
+                            <gem>sass:3.4.22</gem>
+                            <gem>susy:2.2.12</gem>
                         </gems>
                     </rubygemsOptions>
                     <sassOptions>
