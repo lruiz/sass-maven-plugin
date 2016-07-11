@@ -26,7 +26,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * @author Larry Ruiz. Apr 11, 2015
  */
-@Mojo(name = "watch", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
+@Mojo(name = "watch", defaultPhase = LifecyclePhase.COMPILE)
 public class WatchMojo extends SassMojo {
     public void execute() throws MojoExecutionException {
         try {
