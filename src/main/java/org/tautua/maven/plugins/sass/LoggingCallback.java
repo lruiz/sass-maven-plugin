@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author lruiz. Apr 12, 2015
+ * @author Larry Ruiz. Apr 12, 2015
  */
 public class LoggingCallback implements SassCallback {
     private Log log;
