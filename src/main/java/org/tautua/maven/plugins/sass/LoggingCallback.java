@@ -26,10 +26,24 @@ import java.util.List;
  */
 public class LoggingCallback implements SassCallback {
     private Log log;
-    private List<SyntaxException> exceptions = new ArrayList<>();
 
     public LoggingCallback(Log log) {
         this.log = log;
+    }
+
+    @Override
+    public void modified(String sassfile) {
+        log.debug(sassfile + " modified");
+    }
+
+    @Override
+    public void created(String sassfile) {
+        log.debug(sassfile + " created");
+    }
+
+    @Override
+    public void deleted(String sassfile) {
+        log.debug(sassfile + " deleted");
     }
 
     @Override
@@ -39,7 +53,6 @@ public class LoggingCallback implements SassCallback {
 
     @Override
     public void error(SyntaxException e){
-        log.error("compilation error: " + e.getMessage());
-        exceptions.add(e);
+        log.error("compilation error, " + e.getMessage());
     }
 }

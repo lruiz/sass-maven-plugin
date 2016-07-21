@@ -1,13 +1,13 @@
 Sass::Plugin.on_template_modified do |inputfile|
-    puts "modified " + inputfile
+    $callback.modified(inputfile)
 end
 
 Sass::Plugin.on_template_created do |inputfile|
-    puts "modified " + inputfile
+    $callback.created(inputfile)
 end
 
 Sass::Plugin.on_template_deleted do |inputfile|
-    puts "modified " + inputfile
+    $callback.deleted(inputfile)
 end
 
 Sass::Plugin.watch

@@ -20,6 +20,12 @@ package org.tautua.maven.plugins.sass;
  * @author Larry Ruiz. Aug 02, 2015
  */
 public interface SassCallback {
+    void modified(String sassfile);
+
+    void created(String sassfile);
+
+    void deleted(String sassfile);
+
     void compiled(String sassfile, String cssfile);
 
     void error(SyntaxException e);
