@@ -23,6 +23,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import javax.script.ScriptException;
 
 /**
+ * Compiles Sass sources into CSS
  * @author Larry Ruiz. Apr 11, 2015
  */
 @Mojo(name = "compile", defaultPhase = LifecyclePhase.COMPILE)

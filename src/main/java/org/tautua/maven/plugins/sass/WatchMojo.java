@@ -24,6 +24,7 @@ import javax.script.ScriptException;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * Watches the template directory and updates the CSS files whenever the related Sass/SCSS files change
  * @author Larry Ruiz. Apr 11, 2015
  */
 @Mojo(name = "watch", defaultPhase = LifecyclePhase.COMPILE)

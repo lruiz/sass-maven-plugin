@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2016, TAUTUA
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+
+<project name="Sass Maven Plugin">
+    <skin>
+        <groupId>org.tautua.maven.skins</groupId>
+        <artifactId>tautua-default-skin</artifactId>
+        <version>1.0.2</version>
+    </skin>
+    <bannerLeft>
+        <name>SassMavenPlugin</name>
+        <src>images/Logo.png</src>
+        <href>http://sass.tautua.org/</href>
+    </bannerLeft>
+    <body>
+        <head>
+            <![CDATA[
+            <meta name="description" content="sass, sass maven plugin compiler"/>
+            <meta name="keywords" content="java,parser,transformer,sass,css,maven"/>
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-18182963-4']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') +
+                '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+            ]]>
+        </head>
+
+        <menu name="Documentation" inherit="top">
+            <item name="Introduction" href="index.html" title="Introduction"/>
+            <item name="Goals" href="plugin-info.html"/>
+            <item name="Usage" href="usage.html"/>
+        </menu>
+        <menu name="Development">
+            <item name="Source Code" href="https://github.com/lruiz/sass-maven-plugin"/>
+            <item name="Issues" href="https://github.com/lruiz/sass-maven-plugin/issues"/>
+            <item name="People" href="team-list.html"/>
+            <item name="License" href="license.html"/>
+        </menu>
+    </body>
+</project>
