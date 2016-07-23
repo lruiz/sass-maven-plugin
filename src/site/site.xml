@@ -28,9 +28,8 @@
     </bannerLeft>
     <body>
         <head>
-            <![CDATA[
             <meta name="description" content="sass, sass maven plugin compiler"/>
-            <meta name="keywords" content="java,parser,transformer,sass,css,maven"/>
+            <meta name="keywords" content="java,parser,compiler,transformer,sass,css,maven,plugin"/>
             <script type="text/javascript">
                 var _gaq = _gaq || [];
                 _gaq.push(['_setAccount', 'UA-18182963-4']);
@@ -43,7 +42,6 @@
                 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
                 })();
             </script>
-            ]]>
         </head>
 
         <menu name="Documentation" inherit="top">
