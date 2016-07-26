@@ -8,7 +8,7 @@ Just add the plugin to your pom and run 'mvn compile'
     <build>
         <plugins>
             <plugin>
-                <groupId>org.tautua.maven.plugins.sass</groupId>
+                <groupId>org.tautua.maven.plugins</groupId>
                 <artifactId>sass-maven-plugin</artifactId>
             </plugin>
         </plugins>
@@ -22,7 +22,7 @@ You can be more precise by specifying which version of sass or what others gems 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.tautua.maven.plugins.sass</groupId>
+                <groupId>org.tautua.maven.plugins</groupId>
                 <artifactId>sass-maven-plugin</artifactId>
                 <configuration>
                     <rubygemsOptions>
