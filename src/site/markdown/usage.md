@@ -3,13 +3,22 @@ Usage
 
 Basic
 -----
-Just add the plugin to your pom and run 'mvn compile'
+Add the plugin to your pom and run *mvn compile*, the default input directory is *src/main/sass*.
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.tautua.maven.plugins</groupId>
                 <artifactId>sass-maven-plugin</artifactId>
+                <version>${LATEST}</version>
+                <executions>
+                    <execution>
+                        <id>compile-sass</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -24,6 +33,15 @@ You can be more precise by specifying which version of sass or what others gems 
             <plugin>
                 <groupId>org.tautua.maven.plugins</groupId>
                 <artifactId>sass-maven-plugin</artifactId>
+                <version>${LATEST}</version>
+                <executions>
+                    <execution>
+                        <id>compile-sass</id>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
                     <rubygemsOptions>
                         <gems>
