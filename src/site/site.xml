@@ -23,7 +23,7 @@
     </skin>
     <bannerLeft>
         <name>SassMavenPlugin</name>
-        <src>images/Logo.png</src>
+        <src>images/Logo.svg</src>
         <href>http://sass.tautua.org/</href>
     </bannerLeft>
     <body>
