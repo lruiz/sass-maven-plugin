@@ -45,10 +45,10 @@ public abstract class SassMojo extends AbstractMojo {
             rubygemsOptions.getGems().add(new Gem("sass"));
         }
 
-        jruby.put("rubygems_options", rubygemsOptions);
-        jruby.put("sass_options", sassOptions);
-        jruby.put("callback", callback);
-        jruby.put("logger", getLog());
+        jruby.put("$rubygems_options", rubygemsOptions);
+        jruby.put("$sass_options", sassOptions);
+        jruby.put("$callback", callback);
+        jruby.put("$logger", getLog());
         jruby.eval(getScriptReader(scriptpath));
     }
 
