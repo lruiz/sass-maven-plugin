@@ -17,6 +17,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.tautua</groupId>
+        <artifactId>tautua</artifactId>
+        <version>1</version>
+    </parent>
     <groupId>org.tautua.maven.plugins</groupId>
     <artifactId>sass-maven-plugin</artifactId>
     <version>1.1.0</version>
@@ -26,10 +31,6 @@
     <description>SASS to css maven plugin</description>
     <url>http://sass.tautua.org</url>
     <inceptionYear>2009</inceptionYear>
-    <organization>
-        <name>Tautua</name>
-        <url>http://www.tautua.org</url>
-    </organization>
 
     <licenses>
         <license>
@@ -55,16 +56,6 @@
     </scm>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>Sonatype.snapshots</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>Sonatype.staging</id>
-            <name>Sonatype Nexus Staging</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-        </repository>
         <site>
             <id>GitHub.pages</id>
             <name>GitHub Pages</name>
@@ -73,7 +64,7 @@
     </distributionManagement>
 
     <properties>
-        <maven.version>3.3.1</maven.version>
+        <maven.version>3.6.0</maven.version>
     </properties>
 
     <dependencies>
